@@ -5,6 +5,9 @@ import { connect } from 'react-redux';
 import { MapView } from 'expo';
 
 class ReviewScreen extends Component {
+
+  //Whenever navigating to this screen/component, the following object will be used to customize the route.
+  //The following code is to configure how the header looks when we come to the review Screen.
   static navigationOptions = {
     title: 'Review Jobs',
     tabBar: {

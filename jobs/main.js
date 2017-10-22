@@ -29,6 +29,8 @@ class App extends React.Component {
     });
   }
 
+  //Inside TabNavigator instance, we have a key value pair.
+  //We use the key to programatically navigate whenever needed.
   render() {
     const MainNavigator = TabNavigator({
       welcome: { screen: WelcomeScreen },
@@ -52,10 +54,16 @@ class App extends React.Component {
       }
     }, {
       navigationOptions: {
-        tabBar: { visible: false }
+        tabBar: { visible: false } //since we don't want to see the tabs visible on login and splash screen pages
       },
       lazyLoad: true
     });
+
+    /**
+     * What is lazyLoad (simply lazy in latest version of react-navigation) ?
+     * RouterNavigation will try to load welcome, auth and main screens together when rendering
+     * We dont want that. Hence we set lazyLoad to true
+     */
 
     return (
       <Provider store={store}>

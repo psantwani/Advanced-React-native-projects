@@ -7,6 +7,10 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 class Slides extends Component {
   renderLastSlide(index) {
     if (index === this.props.data.length - 1) {
+      /**
+       * Its this.props.onComplete and not this.props.onComplete()
+       * Else the function will be called as soon as the component is rendered.
+       */
       return (
         <Button
           title="Onwards!"
@@ -33,6 +37,7 @@ class Slides extends Component {
   }
 
   render() {
+    //pagingEnabled : The view shouldn't wait half way in between when horizontal scrolling.
     return (
       <ScrollView
         horizontal

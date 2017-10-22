@@ -1,0 +1,50 @@
+Arguments: 
+  /home/piyush/.nvm/versions/node/v8.3.0/bin/node /usr/bin/yarn install
+
+PATH: 
+  /home/piyush/.nvm/versions/node/v8.3.0/bin:/home/piyush/.rvm/gems/ruby-2.4.0/bin:/home/piyush/.rvm/gems/ruby-2.4.0@global/bin:/home/piyush/.rvm/rubies/ruby-2.4.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin:/usr/local/go/bin:/home/piyush/work/bin:/home/piyush/.rvm/bin:/home/piyush/Android/Sdk/tools:/home/piyush/Android/Sdk/platform-tools:/home/piyush/Android/Sdk/tools:/home/piyush/Android/Sdk/platform-tools
+
+Yarn version: 
+  0.22.0
+
+Node version: 
+  8.3.0
+
+Platform: 
+  linux x64
+
+npm manifest: 
+  {
+    "name": "jobs",
+    "version": "0.0.0",
+    "description": "Hello Expo!",
+    "author": null,
+    "private": true,
+    "main": "main.js",
+    "dependencies": {
+      "axios": "0.15.3",
+      "expo": "15.0.2",
+      "latlng-to-zip": "0.0.1",
+      "lodash": "4.17.4",
+      "qs": "6.4.0",
+      "react": "15.4.0",
+      "react-native": "https://github.com/exponent/react-native/archive/sdk-15.0.0.tar.gz",
+      "react-native-elements": "0.10.2",
+      "react-navigation": "1.0.0-beta.7",
+      "react-redux": "5.0.3",
+      "redux": "3.6.0",
+      "redux-persist": "4.6.0",
+      "redux-thunk": "2.2.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: read ETIMEDOUT
+      at _errnoException (util.js:1022:11)
+      at TLSWrap.onread (net.js:610:25)

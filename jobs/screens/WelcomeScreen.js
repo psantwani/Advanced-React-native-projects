@@ -16,8 +16,15 @@ class WelcomeScreen extends Component {
   async componentWillMount() {
     let token = await AsyncStorage.getItem('fb_token');
 
+    //this.props.navigation is available as a prop
     if (token) {
       this.props.navigation.navigate('map');
+
+      /**
+       * The following line is needed because
+       * When lazyLoad is true, when navigating to a new screen, the old screen is not unmounted..
+       * Hence we need to set the token, so that the AppLoading screen is not displayed.
+       */
       this.setState({ token });
     } else {
       this.setState({ token: false });
@@ -29,6 +36,8 @@ class WelcomeScreen extends Component {
   }
 
   render() {
+
+    //we will see a loading expo screen till the token state is either set to the usertoken or set to false.. Till then the mapscreen or the auth screen will not appear.
     if (_.isNull(this.state.token)) {
       return <AppLoading />;
     }

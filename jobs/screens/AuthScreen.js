@@ -6,9 +6,11 @@ import * as actions from '../actions';
 class AuthScreen extends Component {
   componentDidMount() {
     this.props.facebookLogin();
+    //We could comment the next line..
     this.onAuthComplete(this.props);
   }
 
+  //This lifecycle method is called just before when the component is about to be re-rendered.
   componentWillReceiveProps(nextProps) {
     this.onAuthComplete(nextProps);
   }
