@@ -1,47 +1,31 @@
 import Expo, { Notifications } from 'expo';
 import React from 'react';
-import { StyleSheet, Text, View, Alert } from 'react-native';
+import { StyleSheet, StatusBar, Platform } from 'react-native';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import { Provider } from 'react-redux';
 
-import registerForNotifications from './services/push_notifications';
-import store from './store';
 import AuthScreen from './screens/AuthScreen';
 import WelcomeScreen from './screens/WelcomeScreen';
-import MapScreen from './screens/MapScreen';
-import DeckScreen from './screens/DeckScreen';
 import SettingsScreen from './screens/SettingsScreen';
-import ReviewScreen from './screens/ReviewScreen';
+import ChatListScreen from './screens/ChatListScreen';
+import ChatScreen from './screens/ChatScreen';
+import ContactListScreen from './screens/ContactListScreen';
 
 class App extends React.Component {
-  componentDidMount() {
-    registerForNotifications();
-    Notifications.addListener((notification) => {
-      const { data: { text }, origin } = notification;
-
-      if (origin === 'received' && text) {
-        Alert.alert(
-          'New Push Notification',
-          text,
-          [{ text: 'Ok.' }]
-        );
-      }
-    });
-  }
 
   //Inside TabNavigator instance, we have a key value pair.
   //We use the key to programatically navigate whenever needed.
   render() {
+
     const MainNavigator = TabNavigator({
       welcome: { screen: WelcomeScreen },
-      auth: { screen: AuthScreen },
+      auth: {screen: AuthScreen},
       main: {
         screen: TabNavigator({
-          map: { screen: MapScreen },
-          deck: { screen: DeckScreen },
-          review: {
+          chats: { screen: ChatListScreen },
+          contacts: { screen: ContactListScreen },
+          profile: {
             screen: StackNavigator({
-              review: { screen: ReviewScreen },
               settings: { screen: SettingsScreen }
             })
           }
@@ -53,10 +37,11 @@ class App extends React.Component {
         })
       }
     }, {
+      
       navigationOptions: {
         tabBar: { visible: false } //since we don't want to see the tabs visible on login and splash screen pages
       },
-      lazyLoad: true
+      lazy: true      
     });
 
     /**
@@ -65,10 +50,8 @@ class App extends React.Component {
      * We dont want that. Hence we set lazyLoad to true
      */
 
-    return (
-      <Provider store={store}>
-        <MainNavigator />
-      </Provider>
+    return (      
+        <MainNavigator />      
     );
   }
 }
@@ -78,7 +61,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'    
   },
 });
 

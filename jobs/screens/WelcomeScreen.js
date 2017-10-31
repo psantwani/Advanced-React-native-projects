@@ -1,51 +1,53 @@
-import _ from 'lodash';
 import React, { Component } from 'react';
-import { View, Text, AsyncStorage } from 'react-native';
+import { View, Text, Dimensions } from 'react-native';
+import { Button } from 'react-native-elements';
 import { AppLoading } from 'expo';
-import Slides from '../components/Slides';
 
-const SLIDE_DATA = [
-  { text: 'Welcome to JobApp', color: '#03A9F4' },
-  { text: 'Use this to get a job', color: '#009688' },
-  { text: 'Set your location, then swipe away', color: '#03A9F4' }
-];
+const SCREEN_WIDTH = Dimensions.get('window').width;
 
 class WelcomeScreen extends Component {
-  state = { token: null }
 
-  async componentWillMount() {
-    let token = await AsyncStorage.getItem('fb_token');
+  constructor(props){
+    super(props);
 
-    //this.props.navigation is available as a prop
-    if (token) {
-      this.props.navigation.navigate('map');
-
-      /**
-       * The following line is needed because
-       * When lazyLoad is true, when navigating to a new screen, the old screen is not unmounted..
-       * Hence we need to set the token, so that the AppLoading screen is not displayed.
-       */
-      this.setState({ token });
-    } else {
-      this.setState({ token: false });
-    }
+    this.onLoginButtonClick = this.onLoginButtonClick.bind(this);
   }
 
-  onSlidesComplete = () => {
+  onLoginButtonClick(){
     this.props.navigation.navigate('auth');
   }
 
-  render() {
-
-    //we will see a loading expo screen till the token state is either set to the usertoken or set to false.. Till then the mapscreen or the auth screen will not appear.
-    if (_.isNull(this.state.token)) {
-      return <AppLoading />;
-    }
-
-    return (
-      <Slides data={SLIDE_DATA} onComplete={this.onSlidesComplete} />
-    );
-  }
+  render(){
+    return(
+      <View style = {styles.viewStyle}>
+        <Text style={styles.textStyle}>Kya Bolta hai</Text>
+        <Button 
+          title="LOGIN"
+          raised
+          onPress={this.onLoginButtonClick}
+          buttonStyle={styles.buttonStyle}
+          />
+      </View>
+    )
+  }  
 }
+
+const styles = {
+  viewStyle: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: SCREEN_WIDTH
+  },
+  textStyle: {
+    fontSize: 30,
+    color: 'black'
+  },
+  buttonStyle: {
+    backgroundColor: '#0288D1',
+    marginTop: 15
+  }
+};
+
 
 export default WelcomeScreen;

@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { View, Text, AsyncStorage } from 'react-native';
 
-class SettingsScreen extends Component {
+class ChatScreen extends Component {
   render(){
     return(
       <View>
-        <Text>SETTINGS</Text>
+        <Text>CHAT</Text>
       </View>
     )
   }  
 }
 
-export default SettingsScreen;
+export default ChatScreen;

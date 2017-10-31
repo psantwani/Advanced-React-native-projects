@@ -12,6 +12,9 @@
     "icon": "./assets/icons/loading.png",
     "hideExponentText": false
   },
+  "splash": {
+    "image": "./assets/images/splash.png"
+  },
   "packagerOpts": {
     "assetExts": ["ttf", "mp4"]
   },
