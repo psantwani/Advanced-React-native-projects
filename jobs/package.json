@@ -11,7 +11,7 @@
   "private": true,
   "main": "main.js",
   "dependencies": {
-    "axios": "0.15.3",
+    "axios": "0.21.1",
     "expo": "15.0.2",
     "frisbee": "^1.6.1",
     "latlng-to-zip": "0.0.1",
